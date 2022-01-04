@@ -4,51 +4,51 @@
 #include<stdlib.h>
 #include"game.h"
 
-//Ìá¹©Ñ¡Ôñ
+//æä¾›é€‰æ‹©
 void menu()
 {
 	printf("-----------------------------------\n");
 	printf("--------->0.over   1.paly----------\n");
 	printf("-----------------------------------\n");
-	printf("--------Âä×Ó×ø±êµÄ¸ñÊ½£ºa b ---------\n");
-	printf("----- Íæ¼ÒÆå×Ó£ºo  µçÄÔÆå×Ó£º+ -------\n");
+	printf("--------è½å­åæ ‡çš„æ ¼å¼ï¼ša b ---------\n");
+	printf("----- ç©å®¶æ£‹å­ï¼šo  ç”µè„‘æ£‹å­ï¼š+ -------\n");
 }
 
-//ºËĞÄËã·¨
+//æ ¸å¿ƒç®—æ³•
 void game()
 {
-	//¶¨ÒåÆåÅÌ
+	//å®šä¹‰æ£‹ç›˜
 	char board[ROW][ROL];
 	char *p,re,k=0;
 	p = &k;
-	//ÆåÅÌµÄ³õÊ¼»¯
+	//æ£‹ç›˜çš„åˆå§‹åŒ–
 	initBoard(board, ROW, ROL);
-	//´òÓ¡ÆåÅÌ
+	//æ‰“å°æ£‹ç›˜
 	displayboard(board, ROW, ROL);
-	//ÏÂÆå
+	//ä¸‹æ£‹
 	while (1)
 	{
-		//Íæ¼ÒÂä×Ó
+		//ç©å®¶è½å­
 		playerMove(board, ROW, ROL,p);
 		displayboard(board, ROW, ROL);
-		//ÅĞ¶ÏÊÇ·ñÊ¤Àû
+		//åˆ¤æ–­æ˜¯å¦èƒœåˆ©
 		re=isWin(board,ROW,ROL,p);
 		if (re != 'c')
 			break;
-		//µçÄÔÂä×Ó
+		//ç”µè„‘è½å­
 		printf("\n");
 		computerMove(board, ROW, ROL,p);
 		displayboard(board, ROW, ROL);
-		//ÅĞ¶ÏÊÇ·ñÊ¤Àû
+		//åˆ¤æ–­æ˜¯å¦èƒœåˆ©
 		re = isWin(board, ROW, ROL, p);
 		if (re != 'c')
 			break;
 	}
 	switch (re)
 	{
-	case 'o':printf("Íæ¼ÒÊ¤Àû£¡\n"); break;
-	case '+':printf("µçÄÔÊ¤Àû£¡\n"); break;
-	case 'p':printf("ÕâÒ»¾ÖÊÇÆ½¾Ö\n"); break;
+	case 'o':printf("ç©å®¶èƒœåˆ©ï¼\n"); break;
+	case '+':printf("ç”µè„‘èƒœåˆ©ï¼\n"); break;
+	case 'p':printf("è¿™ä¸€å±€æ˜¯å¹³å±€\n"); break;
 	default:break;
 	}
 
@@ -61,22 +61,22 @@ void play()
 	srand((unsigned int)time(NULL));
 	do {
 		menu();
-		printf("--ÇëÑ¡Ôñ£º");
+		printf("--è¯·é€‰æ‹©ï¼š");
 		t=scanf("%d", &input);
 		if (t==0)
 			play();
 		switch (input) {
 		  case 1:
-			  printf("ÓÎÏ·¿ªÊ¼£º\n");
+			  printf("æ¸¸æˆå¼€å§‹ï¼š\n");
 			  game();
-			  printf("\n\n\n-----------ÔÙÀ´Ò»¾ÖÂğ£¿------------\n");
+			  printf("\n\n\n-----------å†æ¥ä¸€å±€å—ï¼Ÿ------------\n");
 			  play();
 			break;
 		  case 0:
-			  printf("\nÓÎÏ·½áÊø£¡\n");
+			  printf("\næ¸¸æˆç»“æŸï¼\n");
 			break;
 		  default:
-			  printf("ÇëÈÏÕæÑ¡Ôñ£¡£¡£¡\n");
+			  printf("è¯·è®¤çœŸé€‰æ‹©ï¼ï¼ï¼\n");
 			break;
 		}
 	} while (input);
